@@ -1,3 +1,4 @@
+#!/bin/python3
 import math
 
 ### Variabel ###
@@ -44,17 +45,17 @@ for i in range(minX, maxX):  # Xcoords Loop
         for k in range(minZ, maxZ):  # Zcoords Loop
             Blockindex = Blockindex + 1
             for l in range(0, 7):
-                x = (Spawners[l][0] - i)
-                y = (Spawners[l][1] - j)
-                z = (Spawners[l][2] - k)
 
+                # Pythagorean.
                 distance = math.sqrt(
-                    math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))  # Pythagorean.
+                    math.pow((Spawners[l][0] - i), 2) + math.pow((Spawners[l][1] - j), 2) + math.pow((Spawners[l][2] - k), 2))
+
                 if (distance > 16):
                     # Later used to calculate the amount of spawners that will be activated.
                     Bigsum = 100000 + Bigsum
                 else:  # Distance is allways positive
                     Bigsum = distance + Bigsum
+
             Distancelist.append(Blockindex)
             Distancelist.append(Bigsum)
             Ramlist.append(Bigsum)
@@ -67,5 +68,5 @@ for i in range(minX, maxX):  # Xcoords Loop
 Ramlist.sort()
 ID = (Distancelist.index(Ramlist[0]))
 DI = Indexlist.index(ID)
-print ("The closest block to all spawners is:", Indexlist[DI + 1],",",
-       Indexlist[DI + 2],",", Indexlist[DI + 3],".", "And you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")
+print ("The closest block to all spawners is:", Indexlist[DI + 1], ",",
+       Indexlist[DI + 2], ",", Indexlist[DI + 3], ".", "And you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")
