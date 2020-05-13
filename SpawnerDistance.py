@@ -67,5 +67,5 @@ for i in range(minX, maxX):  # Xcoords Loop
 Ramlist.sort()
 ID = (Distancelist.index(Ramlist[0]))
 DI = Indexlist.index(ID)
-print ("The closest block to all spawners is:", Indexlist[DI + 1],
-       Indexlist[DI + 2], Indexlist[DI + 3], "and you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")
+print ("The closest block to all spawners is:", Indexlist[DI + 1],",",
+       Indexlist[DI + 2],",", Indexlist[DI + 3],".", "And you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")
