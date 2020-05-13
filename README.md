@@ -7,6 +7,7 @@ The script starts with creating a search area with potential blocks.(min/max of 
 In the second stage it will loop around all the potential blocks and save the sum of distances from the spawners to that block IF the distance<16(A player can only activate a spawner when he/she is 16 blocks away from af spawner).
 
 All distances will be appended into a list, sorted.
+(TODO finish the method)
 ### Requirements ###
 1. python
 2. spawner coordinates
