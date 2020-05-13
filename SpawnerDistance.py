@@ -49,7 +49,7 @@ for i in range(minX, maxX):  # Xcoords Loop
                 z = (Spawners[l][2] - k)
 
                 distance = math.sqrt(
-                    math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))  # pythagorean.
+                    math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))  # Pythagorean.
                 if (distance > 16):
                     # Later used to calculate the amount of spawners that will be activated.
                     Bigsum = 100000 + Bigsum
