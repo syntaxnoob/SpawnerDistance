@@ -1,3 +1,4 @@
+#!/bin/python3
 # Zombie: 370,28,886
 # Spider: 365,37,945
 # Spider: 359,39,917
@@ -56,11 +57,11 @@ for i in range(q1):
 	spawnersZ.pop(0)
 
 for i in spawnersX:
-	somX += i   
+	somX += i
 
 for i in spawnersY:
     somY += i
-    
+
 for i in spawnersZ:
     somZ += i
 
