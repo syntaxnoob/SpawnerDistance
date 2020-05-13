@@ -8,7 +8,7 @@ Spawners = [(370, 28, 886), (365, 37, 945), (359, 39, 917), (381, 42, 917),
 Bigsum = 0
 Distancelist = []  # List with Blockindex and Distances
 Blocklist = []  # List with Blockindex and X/Y/Z coordinates
-Ramlist = []  # List with Distances
+Sumlist = []  # List with Distances
 Blockindex = -3  # Blockindex is the index for the searched block
 
 Xcoords = []
@@ -58,15 +58,15 @@ for i in range(minX, maxX):  # Xcoords Loop
 
             Distancelist.append(Blockindex)
             Distancelist.append(Bigsum)
-            Ramlist.append(Bigsum)
+            Sumlist.append(Bigsum)
             Blocklist.append(Blockindex)
             Blocklist.append(i)
             Blocklist.append(j)
             Blocklist.append(k)
             Bigsum = 0
 
-Ramlist.sort()
-ID = (Distancelist.index(Ramlist[0]))
+Sumlist.sort()
+ID = (Distancelist.index(Sumlist[0]))
 DI = Blocklist.index(ID)
 print ("The closest block to all spawners is:", Blocklist[DI + 1], ",",
        Blocklist[DI + 2], ",", Blocklist[DI + 3], ".", "And you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")
