@@ -43,25 +43,24 @@ for i in range(minX, maxX):  # Xcoords Loop
         for k in range(minZ, maxZ):  # Zcoords Loop
             Blockindex = Blockindex + 1
             for l in range(0, 7):
-                #print (i, j, k)
                 x = (Spawners[l][0] - i)
                 y = (Spawners[l][1] - j)
                 z = (Spawners[l][2] - k)
 
                 distance = math.sqrt(
-                    math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))  # pitagoras
+                    math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))  # pythagorean.
                 if (distance > 16):
-                    Bigsum = 100000 + Bigsum
-                else:
+                    Bigsum = 100000 + Bigsum # Later used to calculate the amount of spawners that will be activated.
+                else: # Distance is allways positive
                     Bigsum = distance + Bigsum
-            Distancelist.append(Blockindex)  # Nummering toevoegen, optioneel.
+            Distancelist.append(Blockindex) 
             Distancelist.append(Bigsum)
             Ramlist.append(Bigsum)
-            Bigsum = 0
             Indexlist.append(Blockindex)
             Indexlist.append(i)
             Indexlist.append(j)
             Indexlist.append(k)
+            Bigsum = 0
 
 Ramlist.sort()
 ID = (Distancelist.index(Ramlist[0]))
