@@ -9,7 +9,9 @@ ax = fig.gca(projection='3d')
 
 x = np.linspace(0, 1, 100) # x is een lijst tussen 0 en 1 met 100 tussenstukken
 X, Y = np.meshgrid(x, x) # maak X en Y een 2d matrix met x rijen en kolomen
-Z = np.sin(X)*np.sin(Y)
+Z = np.sin(X)*np.sin(Y) # Z
+
+print(Z)
 
 levels = np.linspace(-1, 1, 40)
 
