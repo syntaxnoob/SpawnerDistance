@@ -78,4 +78,4 @@ for i in range(len(Distancelist)):
             bestlist.append(Distancelist[(i - 1)])
         else:continue
     else:continue
-print(bestlist)
+print("blocks dat 3 spawners activeren: ",bestlist)
