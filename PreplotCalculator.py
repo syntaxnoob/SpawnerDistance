@@ -1,6 +1,6 @@
 #!/bin/python3
 import math
-
+import pandas as pd
 ### Variabel ###
 # spawner coordinates (Xcoordinate, Ycoordinate, Zcoordinate)
 Spawners = [(370, 28, 886), (365, 37, 945), (359, 39, 917), (381, 42, 917),
@@ -10,12 +10,14 @@ Distancelist = []  # List with Blockindex and Distances
 Blocklist = []  # List with Blockindex and X/Y/Z coordinates
 Sumlist = []  # List with Distances
 Blockindex = -3  # Blockindex is the index for the searched block
+maxdistance = 16  # Max distance from player to spawner
 
 Xcoords = []
 Ycoords = []
 Zcoords = []
 
-bestlist = []
+bestlist = []  # List of blockindexes
+goedblok = []  # List of bestlist blocks
 
 ### Find Search area ###
 
@@ -52,12 +54,11 @@ for i in range(minX, maxX):  # Xcoords Loop
                 distance = math.sqrt(
                     math.pow((Spawners[l][0] - i), 2) + math.pow((Spawners[l][1] - j), 2) + math.pow((Spawners[l][2] - k), 2))
 
-                if (distance > 16):
+                if (distance > maxdistance):
                     # Later used to calculate the amount of spawners that will be activated.
-                    Bigsum = 100000 + Bigsum
+                    Bigsum = 1000000 + Bigsum
                 else:  # Distance is allways positive
                     Bigsum = distance + Bigsum
-
             Distancelist.append(Blockindex)
             Distancelist.append(Bigsum)
             Sumlist.append(Bigsum)
@@ -66,16 +67,36 @@ for i in range(minX, maxX):  # Xcoords Loop
             Blocklist.append(j)
             Blocklist.append(k)
             Bigsum = 0
+        Blockindex = Blockindex - 1
+    Blockindex = Blockindex - 1
 
 Sumlist.sort()
+print(Sumlist[0])
 ID = (Distancelist.index(Sumlist[0]))
 DI = Blocklist.index(ID)
-print ("The closest block to all spawners is:", Blocklist[DI + 1], ",",
-       Blocklist[DI + 2], ",", Blocklist[DI + 3], ".", "And you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")
+print ("The block that is closest to all spawners is:", Blocklist[DI + 1], ",",
+       Blocklist[DI + 2], ",", Blocklist[DI + 3], ".", "And you activate:", round((7000000 - Distancelist[ID]) / 1000000), "Spawners.")
+
 for i in range(len(Distancelist)):
-    if (Distancelist[i] > 100000):
-        if (Distancelist[i] < 500000):
+    if (Distancelist[i] > 1000000):
+        if (Distancelist[i] < 5000000):
             bestlist.append(Distancelist[(i - 1)])
-        else:continue
-    else:continue
-print("blocks dat 3 spawners activeren: ",bestlist)
+        else:
+            continue
+    else:
+        continue
+
+### Bestlist is GOED, niet aankomen ###
+for v in range(len(bestlist)):
+    if(v == (len(bestlist) - 1)):
+        break
+    else:
+        for w in range(len(Blocklist)):
+            if (bestlist[v] == Blocklist[w]):
+                goedblok.append(Blocklist[(w + 1):(w + 4)])
+                break
+            else:
+                continue
+
+print("blocks dat 3 spawners activeren: ", len(bestlist))
+pd.DataFrame(goedblok).to_csv("3spawner.csv", index=False)
