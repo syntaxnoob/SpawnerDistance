@@ -68,5 +68,5 @@ for i in range(minX, maxX):  # Xcoords Loop
 Sumlist.sort()
 ID = (Distancelist.index(Sumlist[0]))
 DI = Blocklist.index(ID)
-print ("The closest block to all spawners is:", Blocklist[DI + 1], ",",
-       Blocklist[DI + 2], ",", Blocklist[DI + 3], ".", "And you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")
+print("The closest block to all spawners is:", Blocklist[DI + 1], ",",
+      Blocklist[DI + 2], ",", Blocklist[DI + 3], ".", "And you activate:", round((700000 - Distancelist[ID]) / 100000), "Spawners.")

@@ -24,3 +24,5 @@ The last step will find the blocks that are linked to a specific distance(Blocki
 2.  Edit the (TODO) Coordinate file
 3.  Open a terminal(Windows, OSX, Linux) and execute the following command: `python3 SpawnerDistance.py`
 4.  The output will look like this (an example): `The closest block to all spawners is: 364 , 35 , 928 . and you activate: 3  Spawners.`
+
+if you use the script, please give credit to syntaxnoob and jellerijnders.
